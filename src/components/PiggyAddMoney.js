@@ -23,10 +23,11 @@ function PiggyAddMoney(props) {
 /**************** Event Handlers  **********************/
 
     const [addAmount, setAddAmount] = useState(0)
-    
-    const newBalance = props.piggy.current_balance + addAmount
 
+   
+    const newBalance = props.piggy.current_balance + parseInt(addAmount)
 
+  
 
     function handleSubmit(e){
         e.preventDefault()
@@ -39,7 +40,7 @@ function PiggyAddMoney(props) {
        })
        .then((r) => r.json())
        .then((updatedPiggy) => {
-          console.log(updatedPiggy)
+          handleReduxUpdate(updatedPiggy)
        })
     }
 

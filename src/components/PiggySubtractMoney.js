@@ -25,7 +25,7 @@ function PiggySubtractMoney(props) {
 /**************** Event Handlers  **********************/
 
     const [removeAmount, setRemoveAmount] = useState(0)
-
+   
     const newBalance = props.piggy.current_balance - removeAmount
 
     function handleSubmit(e){

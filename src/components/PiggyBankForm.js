@@ -35,6 +35,7 @@ function PiggyBankForm() {
     }
    
 
+
     function handleSubmit(e) {
         e.preventDefault()
         fetch('http://localhost:3000/api/v1/piggy_banks', {
@@ -91,6 +92,7 @@ function PiggyBankForm() {
                     <Form.Label>Category:</Form.Label>
                     <Form.Control 
                         as="select" custom
+                       
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}>
                         <option>Emergency</option>

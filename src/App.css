@@ -53,7 +53,7 @@
     border: 1px solid black;
     display: flex;
     justify-content: space-evenly;
-    overflow: wrap;
+    flex-direction: row;
    }
 
    /********** Piggy Bank Container ***********/
@@ -77,7 +77,7 @@
 }
 
 .progress-bar{
-  background-color: blueviolet;
+  background-color: rgb(138, 43, 226);
 }
 
 .edit-menu {
