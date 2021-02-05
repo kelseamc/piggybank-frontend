@@ -17,6 +17,7 @@ const dispatch = useDispatch()
     fetch('http://localhost:3000/api/v1/users/3')
     .then((r) => r.json())
     .then((userObj) => {
+      console.log(userObj)
       dispatch(setAccounts(userObj.accounts))
       dispatch(setPiggy(userObj.piggy_banks))
       dispatch(setTransactions(userObj.transactions))

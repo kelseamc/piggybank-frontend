@@ -32,11 +32,31 @@ const userSlice = createSlice({
         updatePiggy: (state, action) => {
             const pig = state.piggys.find((pig) => pig.id === action.payload.id)
             pig.current_balance = action.payload.current_balance
+        },
+        addTransaction: (state, action) => {
+            state.transactions.push(action.payload)
+        },
+        updateAccountTotal: (state, action) => {
+            let account = state.accounts.find((acc) => acc.id === action.payload.id)
+            account.total = action.payload.total
+        },
+        deleteTransaction: (state, action) => {
+            const newtransactions = state.transactions.filter((tran) => tran.id !== action.payload.id)
+            state.transactions = newtransactions
         }
 
     },
 })
 
-export const { setAccounts, setPiggy, setTransactions, setName, addPiggy, deletePiggy, updatePiggy} = userSlice.actions;
+export const {  setAccounts, 
+                setPiggy, 
+                setTransactions, 
+                setName, 
+                addPiggy, 
+                deletePiggy, 
+                updatePiggy, 
+                addTransaction,
+                updateAccountTotal,
+                deleteTransaction} = userSlice.actions;
 
 export default userSlice.reducer;

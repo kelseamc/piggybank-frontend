@@ -6,14 +6,15 @@ import Table from 'react-bootstrap/Table'
 function TranContainer() {
 
     const userTransactions = useSelector((state) => state.user.transactions)
-    console.log(userTransactions)
+
   
     return (
-        <Table striped bordered hover size="sm">
+        <Table  hover size="sm">
             <thead>
                 <tr>
-              
+                <th>Date</th>
                 <th>Account</th>
+                <th>Account Number</th>
                 <th>Amount</th>
                 <th>Type</th>
                 <th>Remove</th>
@@ -21,7 +22,7 @@ function TranContainer() {
                 </tr>
             </thead>
             <tbody>
-                {userTransactions}
+            {userTransactions ? userTransactions.map((tran) => <TranRow key={tran.id} transaction={tran} />) : null}
             </tbody>
         </Table>
     )

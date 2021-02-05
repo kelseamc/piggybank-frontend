@@ -18,9 +18,16 @@ const balanceSlice = createSlice( {
         },
         addAssign: (state, action) => {
             state.assign += action.payload
+        },
+        addTotal: (state, action) => {
+            state.total += action.payload
+        },
+        subtractTotal: (state, action) => {
+            state.total -= action.payload
         }
-    },
+        
+     },
 })
 
-export const { setAssign, setTotal, subtractAssign, addAssign} = balanceSlice.actions
+export const { setAssign, setTotal, subtractAssign, addAssign, addTotal, subtractTotal} = balanceSlice.actions
 export default balanceSlice.reducer

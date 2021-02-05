@@ -9,9 +9,6 @@ function Accounts(){
             <div className="account-container">
                 <AccountContainer />
             </div>
-            <div className="transaction-container">
-               <TranContainer />
-            </div>
         </div>
     )
 }

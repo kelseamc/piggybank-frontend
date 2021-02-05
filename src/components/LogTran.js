@@ -3,12 +3,32 @@ import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import { useDispatch, useSelector } from 'react-redux'
+import { addTransaction, updateAccountTotal } from '../redux/userSlice'
+import { addAssign, addTotal, subtractAssign, subtractTotal } from '../redux/balanceSlice'
 
 function LogTran(props) {
+
  /*****************  Redux    *****************/
     const dispatch = useDispatch()
     const userId = useSelector((state) => state.user.id)
+    
 
+    function handleReduxTran(tranObj){
+        dispatch(addTransaction(tranObj))
+        if (tranObj.category === "Deposit") {
+           dispatch(addAssign(tranObj.amount))
+           dispatch(addTotal(tranObj.amount))
+        }
+        else { 
+            dispatch(subtractAssign(tranObj.amount))
+            dispatch(subtractTotal(tranObj.amount))
+        }
+    }
+
+    function handleReduxBalance(account){
+        dispatch(updateAccountTotal(account))
+    }
+   
 
 
  /*****************  Event Handlers    *****************/
@@ -19,7 +39,7 @@ function LogTran(props) {
 
     function handleSubmit(event){
         event.preventDefault()
-        console.log(newTran)
+     
         fetch("http://localhost:3000/api/v1/transactions", {
             method: "POST",
             headers: {
@@ -29,7 +49,33 @@ function LogTran(props) {
         })
         .then((r) => r.json())
         .then((newTranDb) => {
-            console.log(newTranDb)
+            
+            updateAccount(newTranDb)
+            handleReduxTran(newTranDb)
+           
+        })
+    }
+
+    let newBalance = 0
+
+    function updateAccount(tranObj){
+        (tranObj.category === "Deposit" ? 
+            newBalance = parseFloat(props.account.total) + parseFloat(tranObj.amount)
+             : 
+            newBalance = parseFloat(props.account.total) - parseFloat(tranObj.amount) )
+
+
+        fetch(`http://localhost:3000/api/v1/accounts/${tranObj.account_id}`, {
+            method: "PATCH",
+            headers: {
+                'Content-Type': 'application/json',
+             },
+            body: JSON.stringify({total: newBalance}),
+        })
+        .then((r) => r.json())
+        .then((account) => {
+           
+            handleReduxBalance(account)
         })
     }
     

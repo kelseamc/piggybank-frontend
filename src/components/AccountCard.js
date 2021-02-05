@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
-import Jumbotron from 'react-bootstrap/Jumbotron'
-import Container from 'react-bootstrap/Container'
+import Card from 'react-bootstrap/Card'
+
 import Button from 'react-bootstrap/Button'
 import LogTran from './LogTran'
+
+
 
 function AccountCard({account}) {
     const [modalLogShow, setModalLogShow] = useState(false)
@@ -10,16 +12,14 @@ function AccountCard({account}) {
 
     return (
         <>
-            <Jumbotron fluid>
-                <Container>
-                    <h3>
-                    {account.name}
-                    </h3>
-                    <h2>Current Balance: ${account.total}</h2>
-                </Container>
-                <Button onClick={() => setModalLogShow(true)} variant="outline-dark"> Log Transaction </Button>
-            </Jumbotron>
-
+             <Card className="text-center">
+                <Card.Header>{account.name}</Card.Header>
+                <Card.Body>
+                    <Card.Title>Current Balance: ${account.total}</Card.Title>
+                  
+                    <Button onClick={() => setModalLogShow(true)} variant="outline-dark"> Log Transaction </Button>
+                </Card.Body>
+             </Card>
             <LogTran key={account.id} account={account} show={modalLogShow} onHide={() => setModalLogShow(false)} />
         </>
     )
