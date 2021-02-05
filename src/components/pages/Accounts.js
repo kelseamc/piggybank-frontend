@@ -1,14 +1,16 @@
 import React from "react"
+import AccountContainer from "../AccountContainer"
+import TranContainer from "../TranContainer"
 
 function Accounts(){
 
     return(
         <div className="accounts">
             <div className="account-container">
-                <h1>Accounts</h1>
+                <AccountContainer />
             </div>
             <div className="transaction-container">
-                <h1>Transaction</h1>
+               <TranContainer />
             </div>
         </div>
     )

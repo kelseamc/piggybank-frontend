@@ -14,12 +14,12 @@ function App() {
 
 const dispatch = useDispatch() 
   useEffect(() => {
-    fetch('http://localhost:3000/api/v1/users/1')
+    fetch('http://localhost:3000/api/v1/users/3')
     .then((r) => r.json())
     .then((userObj) => {
       dispatch(setAccounts(userObj.accounts))
       dispatch(setPiggy(userObj.piggy_banks))
-      dispatch(setTransactions(userObj.trasactions))
+      dispatch(setTransactions(userObj.transactions))
       dispatch(setName(userObj.name))
       handleMoney(userObj)
     })
