@@ -11,20 +11,39 @@
   
   .background { 
     grid-area: 1 / 1 / 6 / 6; 
-    border: 1px solid  black;
+    /* border: 1px solid  black; */
+    text-align: center;
   }
 
   .logo { 
     grid-area: 4 / 2 / 5 / 5;
-    border: 1px solid black;
+   
     text-align: center;
+    background-color: rgba(230, 230, 230, 0.562);
+    margin: auto;
+   }
+   
+   .logo img{
+    grid-area: 4 / 2 / 5 / 5;
+    /* border: 1px solid black; */
     
+   }
 
+   .form{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: auto;
+    align-items: center;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.877);
+    width: 400px;
+    
    }
   .button-login {
      grid-area: 2 / 2 / 4 / 5; 
      text-align: center;
-    border: 1px solid black;
+   
+    /* border: 1px solid black; */
     }
 
 /*************************   Dashboard     ***************************/
@@ -107,25 +126,46 @@
   grid-template-rows: repeat(7, 1fr);
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+  
   }
   
   .dash-body{ 
     grid-area: 1 / 1 / 8 / 10; 
-    border: 1px solid black;
+    
   }
 
   .account-container { 
+
     grid-area: 2 / 2 / 4 / 9; 
-    border: 1px solid black;
+    
 
   }
 
   .transaction-container { 
     grid-area: 4 / 2 / 8 / 9;
-    border: 1px solid black;
+
 
    }
 
+  .account-remove{
+    right: 0;
+  }
+
+
+
+
+/*******************  Transaction Table ***********************/
+
+.Withdrawal{
+  background-color: rgb(255, 179, 179);
+}
+
+.Deposit{
+  background-color:	rgb(189, 245, 189);
+}
+
+
+/**********************  Account Carousel   ******************************/
 
 /********************* Navigation Bar ***************/
 
@@ -200,18 +240,3 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
-
-
-/*******************  Transaction Table ***********************/
-
-.Withdrawal{
-  background-color: rgb(255, 179, 179);
-}
-
-.Deposit{
-  background-color:	rgb(189, 245, 189);
-}
-
-
-/**********************  Account Carousel   ******************************/
-

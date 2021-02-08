@@ -7,7 +7,7 @@ function DashChart() {
 
     const piggys = useSelector((state) => state.user.piggys)
   
-
+    //possibly use state here?
     let personal = 0
     let emergency = 0
     let retirement = 0
@@ -49,6 +49,8 @@ function DashChart() {
         ],
         
     }
+
+    // look into adding click events to chart sections 
     return (
         <div>
             <Doughnut data={data} />

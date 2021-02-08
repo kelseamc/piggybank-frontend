@@ -1,6 +1,6 @@
 import React from "react"
 import AccountContainer from "../AccountContainer"
-import TranContainer from "../TranContainer"
+
 
 function Accounts(){
 

@@ -76,8 +76,8 @@ function TranRow({transaction}) {
         <>
             <tr className={transaction.category}>
                 <td>{transaction.created_at.slice(0,10)}</td>
-                <td>{transaction.account.name}</td>
-                <td>{transaction.account.account_number}</td>
+                <td>{transaction.account.name}</td> 
+                 <td>{transaction.account.account_number}</td>
                 <td>${(transaction.amount).toFixed(2)}</td>
                 <td>{transaction.category}</td>
                 <td>

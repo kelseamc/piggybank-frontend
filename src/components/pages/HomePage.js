@@ -1,20 +1,43 @@
-import React from "react"
+import React, {useState} from "react"
+import Button from "react-bootstrap/Button"
+import Login from "../Login"
+import SignUp from "../SignUp"
 
 function HomePage(){
+    const [logoShow, setLogoShow] = useState(true)
+    const [form, setForm] = useState()
+
+    function handleLoginClick(){
+        setLogoShow(false)
+        setForm(<Login />)
+    }
+
+    function handleSignupClick(){
+        setLogoShow(false)
+        setForm(<SignUp />)
+    }
+    
+
 
     return(
         <div className="homepage">
             <div className="background">
+                <h1>PiggyBank</h1>
                 <div className="logo">
-                    <h1>PiggyBank</h1>
-                    <img src="https://ak.picdn.net/shutterstock/videos/1006763956/thumb/9.jpg" alt="piggybank" />
+                    
+                    
+                    {logoShow ? <img src="https://i.pinimg.com/736x/31/ec/8f/31ec8f7305fdc8311548f633dcf16a38.jpg" alt="piggybank" />
+                    :
+                    form }
                 </div>
-                <div className="button-login">
-                    <button>Login</button>
-                    <button>Sign Up</button>
+                <div className="button-login" >
+                <Button variant="outline-dark" onClick={handleLoginClick}>Login</Button>
+              
+                <Button variant="outline-dark" onClick={handleSignupClick}>Sign Up</Button>
                 </div>
             </div>
 
+         
         </div>
     )
 }

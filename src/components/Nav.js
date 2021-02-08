@@ -1,6 +1,8 @@
 import React from "react"
 import { push as Menu } from 'react-burger-menu'
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 
 
 function Nav(){
@@ -19,15 +21,16 @@ function Nav(){
                     </div>
                     <div className="bm-item-list">
                         <div >
-                            <a className="bm-item" href="/">Home</a>
+                            <Link to="/" > Home</Link>
+                            
                         </div>  
                     <br />
                         <div className="bm-item">
-                            <a  className="bm-item" href="/dashboard">Dashboard</a>
+                            <Link to="/dashboard" > Dashboard</Link>
                         </div> 
                     <br />
                         <div className="bm-item">
-                            <a  className="bm-item" href="/accounts">Accounts</a>
+                            <Link to="/accounts" > Accounts</Link>
                         </div> 
                     </div>
             

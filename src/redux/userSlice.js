@@ -3,13 +3,16 @@ import { createSlice } from '@reduxjs/toolkit'
 const userSlice = createSlice({
     name: "user",
     initialState: {
-        id: 3,
+        id: 0,
         name: "",
         accounts: [],
         transactions: [],
         piggys: []
     },
     reducers: {
+        setId: (state, action) => {
+            state.id = action.payload
+        },
         setAccounts: (state,action) => {
             state.accounts = action.payload
         },
@@ -43,8 +46,14 @@ const userSlice = createSlice({
         deleteTransaction: (state, action) => {
             const newtransactions = state.transactions.filter((tran) => tran.id !== action.payload.id)
             state.transactions = newtransactions
+        },
+        addAccount: (state, action) => {
+            state.accounts.push(action.payload)
+        },
+        deleteAccount: (state, action) => {
+            const accounts = state.accounts.filter((acc) => acc.id !== action.payload.id)
+            state.accounts = accounts
         }
-
     },
 })
 
@@ -57,6 +66,9 @@ export const {  setAccounts,
                 updatePiggy, 
                 addTransaction,
                 updateAccountTotal,
-                deleteTransaction} = userSlice.actions;
+                deleteTransaction,
+                addAccount,
+                deleteAccount,
+                setId} = userSlice.actions;
 
 export default userSlice.reducer;
