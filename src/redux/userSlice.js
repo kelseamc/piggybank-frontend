@@ -7,9 +7,13 @@ const userSlice = createSlice({
         name: "",
         accounts: [],
         transactions: [],
-        piggys: []
+        piggys: [],
+        loggedIn: false
     },
     reducers: {
+        login: (state, action) => {
+            state.loggedIn = action.payload
+        },
         setId: (state, action) => {
             state.id = action.payload
         },
@@ -53,6 +57,9 @@ const userSlice = createSlice({
         deleteAccount: (state, action) => {
             const accounts = state.accounts.filter((acc) => acc.id !== action.payload.id)
             state.accounts = accounts
+        },
+        initialize: (state, action) => {
+            state.user = state.initialState
         }
     },
 })
@@ -69,6 +76,8 @@ export const {  setAccounts,
                 deleteTransaction,
                 addAccount,
                 deleteAccount,
-                setId} = userSlice.actions;
+                setId,
+                login,
+                initialize} = userSlice.actions;
 
 export default userSlice.reducer;

@@ -7,11 +7,12 @@ import NewPigModal from './NewPigModal'
 
 
 function PiggyContainer() {
-    const userPiggys = useSelector(state => state.user.piggys).map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />)
+    const userPiggys = useSelector(state => state.user.piggys)
+   
     const [modalShow, setModalShow] = useState(false)
 
     return (
-        <div>
+        <div className="bank-container">
         <div>
             <Button 
             className="new-pig-btn" 
@@ -24,8 +25,8 @@ function PiggyContainer() {
                 onHide={() => setModalShow(false)}
             />
         </div>
-        <div >
-            {userPiggys}
+        <div id="tile-container">
+            {userPiggys ? userPiggys.map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />) : null}
         </div>
         </div>
     )

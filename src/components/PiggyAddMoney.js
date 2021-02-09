@@ -5,6 +5,7 @@ import Form from 'react-bootstrap/Form'
 import { useDispatch } from 'react-redux'
 import { updatePiggy } from '../redux/userSlice'
 import { subtractAssign } from '../redux/balanceSlice'
+import { useHistory } from 'react-router-dom'
 
 
 
@@ -13,6 +14,7 @@ function PiggyAddMoney(props) {
 /**************** Redux  **********************/
 
     const dispatch = useDispatch()
+    const history = useHistory()
 
     function handleReduxUpdate(pigObj){
         dispatch(updatePiggy(pigObj))
@@ -41,6 +43,7 @@ function PiggyAddMoney(props) {
        .then((r) => r.json())
        .then((updatedPiggy) => {
           handleReduxUpdate(updatedPiggy)
+        
        })
     }
 

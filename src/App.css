@@ -63,41 +63,59 @@
 
   .dash-top { 
     grid-area: 2 / 2 / 4 / 9; 
-    border: 1px solid black;
+    /* border: 1px solid black; */
 
   }
 
   .bank-container { 
     grid-area: 4 / 2 / 8 / 9;
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-evenly;
-    flex-direction: row;
+    /* border: 1px solid black; */
+  
+   }
+
+   #chart{
+     height: 200px;
+     width: 100px;
    }
 
    /********** Piggy Bank Container ***********/
 
-/* .new-pig-btn {
-  position:absolute;
-  top: 0;
-  right: 0; */
+
+
+  #tile-container{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 
 
 /***************** Piggy Bank Tile ******************/
 
-/* .pig-icon{
-  position:absolute;
-  top: 0;
-  left: 0;
-} */
 
-.pig-header{
+/* Tile Border Colors */
+.pig-header-Emergency{
  text-align: center;
+ border: 1px solid  rgb(0, 92, 230);
+ align-self: flex-start;
+ margin-bottom: 30px;
 }
+.pig-header-Personal{
+  text-align: center;
+  border: 1px solid  rgb(138, 43, 226);
+  align-self: flex-start;
+  margin-bottom: 30px;
 
-.progress-bar{
-  background-color: rgb(138, 43, 226);
-}
+ }
+.pig-header-Retirement{
+  text-align: center;
+  border: 1px solid  rgb(255, 153, 0);
+  align-self: flex-start;
+  margin-bottom: 30px;
+
+ }
+
+ /* Edit Menu */
 
 .edit-menu {
   position: absolute;
@@ -113,7 +131,29 @@
 
 .edit-option:hover {
   height: 4em
-  
+} 
+
+/* Pig Icon Colors */
+.Emergency{
+  color: rgb(0, 92, 230);
+}
+.Personal{
+  color:  rgb(138, 43, 226);
+}
+.Retirement{
+  color: rgb(255, 153, 0);
+}
+
+/* Progress bar colors */
+.bg-Emergency{
+ background-color:  rgb(0, 92, 230);
+}
+.bg-Personal{
+  background-color: rgb(138, 43, 226);
+}
+
+.bg-Retirement{
+  background-color: rgb(255, 153, 0);
 }
 
 
@@ -165,7 +205,7 @@
 }
 
 
-/**********************  Account Carousel   ******************************/
+
 
 /********************* Navigation Bar ***************/
 

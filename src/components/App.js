@@ -1,46 +1,58 @@
-import React from "react"
+import React, {useEffect} from "react"
 
 import HomePage from "./pages/HomePage"
 import Dashboard from "./pages/Dashboard"
 import Accounts from "./pages/Accounts"
-import { Route, Switch } from "react-router-dom"
+import { Redirect, Route, Switch } from "react-router-dom"
+import { useDispatch, useSelector } from 'react-redux'
+
+import { setId, setAccounts, setPiggy, setTransactions, setName, login } from '../redux/userSlice'
+import { setAssign, setTotal } from "../redux/balanceSlice";
 
 import Nav from "./Nav"
 
-
-
 function App() {
 
+  const dispatch = useDispatch() 
+  const loggedIn = useSelector((state) => state.user.loggedIn)
 
+   useEffect(() => {
+     const token = localStorage.getItem("token")
+      if (token){
+        fetch(`http://localhost:3000/api/v1/profile`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((r) => r.json())
+        .then((userObj) => {
+          setCurrentUser(userObj)
+     
+        })
+      }
+    },[])
 
+    function setCurrentUser(userObj){
+          dispatch(login(true))
+          dispatch(setId(userObj.id))
+          dispatch(setAccounts(userObj.accounts))
+          dispatch(setPiggy(userObj.piggy_banks))
+          dispatch(setTransactions(userObj.transactions))
+          dispatch(setName(userObj.name))
 
-  // const dispatch = useDispatch() 
-  //  useEffect(() => {
-  //     fetch(`http://localhost:3000/api/v1/users/4`)
-  //     .then((r) => r.json())
-  //     .then((userObj) => {
-  //       console.log(userObj)
-  //       dispatch(setId(userObj.id))
-  //       dispatch(setAccounts(userObj.accounts))
-  //       dispatch(setPiggy(userObj.piggy_banks))
-  //       dispatch(setTransactions(userObj.transactions))
-  //       dispatch(setName(userObj.name))
-  //       handleMoney(userObj)
-  //     })
-  //   },[])
-
-  // function handleMoney(userObj){
-  //   let savings = 0
-  //   userObj.accounts.map((account) => savings += account.total)
-  //   dispatch(setTotal(savings))
-  //   let inPiggy = 0 
-  //   userObj.piggy_banks.map((piggy) => inPiggy += piggy.current_balance)
-  //   let toBeAssigned = savings - inPiggy
-  //   dispatch(setAssign(toBeAssigned))
-
-  // }
-
-
+          let savings = 0
+          if (userObj.accounts){
+                userObj.accounts.map((account) => savings += account.total)
+              }
+          dispatch(setTotal(savings))
+          let inPiggy = 0 
+          if (userObj.piggy_banks){
+                userObj.piggy_banks.map((piggy) => inPiggy += piggy.current_balance)
+              }
+          let toBeAssigned = savings - inPiggy
+          dispatch(setAssign(toBeAssigned))
+    }
   
  return (
   <div className="app">
@@ -49,23 +61,30 @@ function App() {
             <div>
                 <div className="bm-overlay"></div>
             </div>
-  
             <Nav />
-            
           </div>
           
           <Switch>
 
             <Route exact path="/" >
-              <HomePage />
+              {loggedIn ?
+              (<Redirect to="/dashboard" />)
+              :
+              (<HomePage setCurrentUser={setCurrentUser}/>)}
             </Route>
 
             <Route exact path="/dashboard" >
-              <Dashboard />
+              {loggedIn ?
+              (<Dashboard />)
+              :
+              (<Redirect to="/" />)}
             </Route>
 
             <Route exact path="/accounts" >
-              <Accounts />
+              {loggedIn ?
+              (<Accounts />)
+              :
+              (<Redirect to="/" />)}
             </Route>
        
 

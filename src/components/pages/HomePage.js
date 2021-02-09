@@ -3,18 +3,18 @@ import Button from "react-bootstrap/Button"
 import Login from "../Login"
 import SignUp from "../SignUp"
 
-function HomePage(){
+function HomePage({setCurrentUser}){
     const [logoShow, setLogoShow] = useState(true)
     const [form, setForm] = useState()
 
     function handleLoginClick(){
         setLogoShow(false)
-        setForm(<Login />)
+        setForm(<Login setCurrentUser={setCurrentUser} />)
     }
 
     function handleSignupClick(){
         setLogoShow(false)
-        setForm(<SignUp />)
+        setForm(<SignUp setCurrentUser={setCurrentUser} />)
     }
     
 

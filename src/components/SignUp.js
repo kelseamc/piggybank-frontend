@@ -2,41 +2,13 @@ import React, {useState} from 'react'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
-import { useDispatch } from 'react-redux'
-import { setId, setAccounts, setPiggy, setTransactions, setName } from '../redux/userSlice'
-import { setAssign, setTotal } from "../redux/balanceSlice";
+import { useHistory } from "react-router-dom";
 
 
 
-function SignUp() {
+function SignUp({setCurrentUser}) {
 
-/*********************  Redux  ******************************/
-    const dispatch = useDispatch()
-
-    function handleRedux(id){
-        fetch(`http://localhost:3000/api/v1/users/${id}`)
-        .then((r) => r.json())
-        .then((userObj) => {
-          console.log(userObj)
-          dispatch(setId(userObj.id))
-          dispatch(setAccounts(userObj.accounts))
-          dispatch(setPiggy(userObj.piggy_banks))
-          dispatch(setTransactions(userObj.transactions))
-          dispatch(setName(userObj.name))
-          handleMoney(userObj)
-        })
-    }
-
-    function handleMoney(userObj){
-        let savings = 0
-        userObj.accounts.map((account) => savings += account.total)
-        dispatch(setTotal(savings))
-        let inPiggy = 0 
-        userObj.piggy_banks.map((piggy) => inPiggy += piggy.current_balance)
-        let toBeAssigned = savings - inPiggy
-        dispatch(setAssign(toBeAssigned))
-    
-      }
+  
 
 /*********************  Event Handlers  ******************************/
 
@@ -49,9 +21,11 @@ function SignUp() {
 
     const newUser = {name: newName, username, password}
 
+    let history = useHistory()
+
     function handleNewUser(e){
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/users`, {
+        fetch(`http://localhost:3000/api/v1/register`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -59,15 +33,15 @@ function SignUp() {
             body: JSON.stringify(newUser),
        })
        .then((r) => r.json())
-       .then((newDbUser) => {
-      
-            handleNewAccount(newDbUser.id)
-          
+       .then((data) => {
+            handleNewAccount(data.user)
+            localStorage.setItem("token", data.token)
+           
        })
     }
 
-    function handleNewAccount(userId){
-        const newUserAccount = {account_number: accNum, name: accName, total: balance, user_id: userId}
+    function handleNewAccount(userObj){
+        const newUserAccount = {account_number: accNum, name: accName, total: balance, user_id: userObj.id}
 
         fetch(`http://localhost:3000/api/v1/accounts`, {
            method: "POST",
@@ -78,9 +52,24 @@ function SignUp() {
        })
        .then((r) => r.json())
        .then((newDbAccount) => {
-            
-            handleRedux(newDbAccount.user_id)
+           handleUserInfo()
        })
+    }
+
+    function handleUserInfo(){
+        const token = localStorage.getItem("token")
+
+        fetch(`http://localhost:3000/api/v1/profile`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then((r) => r.json())
+        .then((userObj) => {
+          setCurrentUser(userObj)
+          history.push("/dashboard")
+        })
     }
 
 /*********************  JSX  ******************************/

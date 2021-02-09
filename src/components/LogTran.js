@@ -115,6 +115,7 @@ function LogTran(props) {
                                 as="select" custom
                                 value={type}
                                 onChange={(e) => setType(e.target.value)}>
+                                <option>Choose ...</option>
                                 <option>Withdrawal</option>
                                 <option>Deposit</option>
                             

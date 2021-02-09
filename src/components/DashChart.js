@@ -12,6 +12,7 @@ function DashChart() {
     let emergency = 0
     let retirement = 0
 
+    if(piggys){
     piggys.forEach((pig) => {
         if (pig.category === "Personal"){
              personal += pig.current_balance
@@ -24,6 +25,7 @@ function DashChart() {
         }
      
      })
+    }
 
 
     const data = {
@@ -34,8 +36,8 @@ function DashChart() {
             data: [personal , emergency , retirement],
             backgroundColor: [
                 'rgb(138, 43, 226)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
+                'rgb(0, 92, 230)',
+                'rgb(255, 153, 0)',
              
             ],
             borderColor: [
@@ -53,7 +55,7 @@ function DashChart() {
     // look into adding click events to chart sections 
     return (
         <div>
-            <Doughnut data={data} />
+            <Doughnut width={700} height={350} id="chart" data={data} options={{ maintainAspectRatio: false }}/>
         </div>
     )
 }

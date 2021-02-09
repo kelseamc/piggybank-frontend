@@ -95,6 +95,7 @@ function PiggyBankForm() {
                        
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}>
+                        <option>Choose ...</option>
                         <option>Emergency</option>
                         <option>Personal</option>
                         <option>Retirement</option>

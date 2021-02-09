@@ -12,7 +12,7 @@ function DashboardHeader() {
     
 
     return (
-        <>
+        <div className="dash-top">
             <div>
                 <h1>Welcome {userName}!! </h1>
                 <h3>Left to be Assigned: ${toBe}</h3>
@@ -20,7 +20,7 @@ function DashboardHeader() {
             <div>
                 <DashChart />
             </div>
-        </>
+        </div>
     )
 }
 
