@@ -5,7 +5,7 @@ import deleteForeverOutline from '@iconify-icons/mdi/delete-forever-outline';
 import Button from 'react-bootstrap/Button'
 import LogTran from './LogTran'
 import { useDispatch } from 'react-redux';
-import { deleteAccount } from '../redux/userSlice';
+import { deleteAccount, deleteAccountTransactions } from '../redux/userSlice';
 import { subtractAssign, subtractTotal } from '../redux/balanceSlice';
 
 
@@ -18,6 +18,7 @@ function AccountCard({account}) {
         dispatch(deleteAccount(account))
         dispatch(subtractTotal(account.total))
         dispatch(subtractAssign(account.total))
+        dispatch(deleteAccountTransactions(account.id))
     }
   
     function handleRemove(){
@@ -35,24 +36,27 @@ function AccountCard({account}) {
             <br />
              <Card >
                 <Card.Header className="text-center">
-                    {account.name}
+                <Card.Title>{account.name}</Card.Title>
                    
                  
                  </Card.Header>
                 <Card.Body className="text-center">
-                    <Card.Title>Current Balance: ${account.total}</Card.Title>
+                    <h6>Current Balance: ${account.total}</h6>
                   
-                    <Button onClick={() => setModalLogShow(true)} variant="outline-dark"> Log Transaction </Button>
+                    <span className="log-btn">
+                    <Button  onClick={() => setModalLogShow(true)} variant="outline-dark"> Log Transaction </Button>
+                    </span>
                 </Card.Body>
                 <Card.Footer>
-                <Icon 
-                        className="account-remove"
-                        onClick={handleRemove} 
-                        icon={deleteForeverOutline} 
-                        color="grey" 
-                        height="2em" 
+                    <span className="account-remove">
+                        <Icon 
+                            onClick={handleRemove} 
+                            icon={deleteForeverOutline} 
+                            color="grey" 
+                            height="2em" 
                         />
-                 
+                    </span>
+                   
                 </Card.Footer>
              </Card>
             <LogTran key={account.id} account={account} show={modalLogShow} onHide={() => setModalLogShow(false)} />

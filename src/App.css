@@ -48,7 +48,7 @@
 
 /*************************   Dashboard     ***************************/
 
-.dashboard {
+ /* .dashboard {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(7, 1fr);
@@ -59,19 +59,27 @@
   .dash-body{ 
     grid-area: 1 / 1 / 8 / 10; 
     border: 1px solid black;
-  }
+  } */
 
   .dash-top { 
-    grid-area: 2 / 2 / 4 / 9; 
+    /* grid-area: 2 / 2 / 4 / 9;  */
+    padding-top: 100px;
+    
+    padding-right: 80px;
+    padding-left: 80px;
     /* border: 1px solid black; */
 
   }
 
   .bank-container { 
-    grid-area: 4 / 2 / 8 / 9;
+  
+    padding-bottom: 100px;
+    padding-right: 80px;
+    padding-left: 80px;
+    /* grid-area: 4 / 2 / 8 / 9; */
     /* border: 1px solid black; */
   
-   }
+    }  
 
    #chart{
      height: 200px;
@@ -84,8 +92,8 @@
 
   #tile-container{
     display: flex;
-    justify-content: space-around;
     flex-direction: row;
+    justify-content: space-evenly;
     flex-wrap: wrap;
   }
 
@@ -160,7 +168,7 @@
 /*************************   Accounts Page    ************************************/
 
 
-.accounts{
+/* .accounts{
   display: grid;
   grid-template-columns: repeat(9, 1fr);
   grid-template-rows: repeat(7, 1fr);
@@ -172,23 +180,34 @@
   .dash-body{ 
     grid-area: 1 / 1 / 8 / 10; 
     
-  }
+  } */
 
   .account-container { 
-
-    grid-area: 2 / 2 / 4 / 9; 
+    padding-top: 100px;
+    padding-bottom: 100px;
+    padding-right: 80px;
+    padding-left: 80px;
+    /* grid-area: 2 / 2 / 4 / 9;  */
     
 
   }
 
   .transaction-container { 
-    grid-area: 4 / 2 / 8 / 9;
+    /* grid-area: 4 / 2 / 8 / 9; */
 
 
    }
 
+  .log-btn{
+
+
+    /* border: 1px solid black; */
+  }
   .account-remove{
-    right: 0;
+   right: 0;
+    
+
+    /* border: 1px solid black; */
   }
 
 

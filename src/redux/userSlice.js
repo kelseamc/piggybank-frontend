@@ -51,6 +51,10 @@ const userSlice = createSlice({
             const newtransactions = state.transactions.filter((tran) => tran.id !== action.payload.id)
             state.transactions = newtransactions
         },
+        deleteAccountTransactions: (state, action) => {
+            const newtransactions = state.transactions.filter((tran) => tran.account_id !== action.payload)
+            state.transactions = newtransactions
+        },
         addAccount: (state, action) => {
             state.accounts.push(action.payload)
         },
@@ -78,6 +82,7 @@ export const {  setAccounts,
                 deleteAccount,
                 setId,
                 login,
-                initialize} = userSlice.actions;
+                initialize,
+                deleteAccountTransactions} = userSlice.actions;
 
 export default userSlice.reducer;

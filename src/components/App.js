@@ -56,14 +56,7 @@ function App() {
   
  return (
   <div className="app">
-     <div id="outer-container">
-        <div className="right"> 
-            <div>
-                <div className="bm-overlay"></div>
-            </div>
             <Nav />
-          </div>
-          
           <Switch>
 
             <Route exact path="/" >
@@ -89,7 +82,7 @@ function App() {
        
 
           </Switch>
-      </div>
+     
   </div>
  )
 
