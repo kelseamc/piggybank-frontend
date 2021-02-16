@@ -1,5 +1,5 @@
 import React, {useEffect} from "react"
-
+import Header from './Header'
 import HomePage from "./pages/HomePage"
 import Dashboard from "./pages/Dashboard"
 import Accounts from "./pages/Accounts"
@@ -28,10 +28,10 @@ function App() {
         .then((r) => r.json())
         .then((userObj) => {
           setCurrentUser(userObj)
-     
+         
         })
       }
-    },[])
+    })
 
     function setCurrentUser(userObj){
           dispatch(login(true))
@@ -55,9 +55,14 @@ function App() {
     }
   
  return (
-  <div className="app">
+  <div  id="outer-container">
+          
+        
             <Nav />
+            <div id="page-wrap">
+            <Header />
           <Switch>
+            
 
             <Route exact path="/" >
               {loggedIn ?
@@ -82,7 +87,7 @@ function App() {
        
 
           </Switch>
-     
+          </div>
   </div>
  )
 

@@ -34,7 +34,7 @@ function AccountCard({account}) {
     return (
         <>
             <br />
-             <Card >
+             <Card className="account-card">
                 <Card.Header className="text-center">
                 <Card.Title>{account.name}</Card.Title>
                    

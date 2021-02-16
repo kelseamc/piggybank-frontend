@@ -1,8 +1,8 @@
 import React from "react"
 import Button from "react-bootstrap/esm/Button";
-import { push as Menu } from 'react-burger-menu'
+import Menu from 'react-burger-menu/lib/menus/stack'
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useHistory } from "react-router-dom";
+import {  NavLink, useHistory } from "react-router-dom";
 import { initialize, login } from "../redux/userSlice";
 
 
@@ -22,32 +22,40 @@ function Nav(){
         dispatch(initialize())
         history.push("/")
     }
+
+  
     return(
         <div>
        
-            <div className="bm-menu-wrap">
-                <Menu >
+            <div >
+                <Menu right pageWrapId={ "page-wrap" } outerContainerId={ "outer-container" }  >
                    
-                {isLoggedIn ? (<div className="bm-item-list">
-                       <h2>Welcome {userName}!</h2>
+                {isLoggedIn ? (<div className="nav-header" >
+                       <h2>Hello, {userName}!</h2>
                         <h3>Total Savings: ${totalSavings}</h3>
                     </div> ) : (<h2>Please Login or Sign Up</h2>) }
+                    
                     <div className="bm-item-list">
-                        <div >
-                           {/* {isLoggedIn ? null : (<Link to="/" > Home</Link>) } */}
-                            
-                          
-                        </div>  
-                    <br />
-                        <div className="bm-item">
-                        {isLoggedIn ? ( <Link to="/dashboard" > Dashboard</Link> ) : null }
-                        </div> 
+                       
+                       
+                        {isLoggedIn ? ( <NavLink 
+                                            className="bm-item" 
+                                            style={{ textDecoration: 'none' }} 
+                                            to="/dashboard" > 
+                                        Dashboard
+                                        </NavLink> ) : null }
+                      
                         <br />
-                        <div className="bm-item">
-                        {isLoggedIn ? (<Link to="/accounts" > Accounts</Link>) : null }
-                        </div>
+                        
+                        {isLoggedIn ? (<NavLink 
+                                            className="bm-item" 
+                                            to="/accounts"
+                                            style={{ textDecoration: 'none' }}  > 
+                                        Accounts
+                                        </NavLink>) : null }
+                     
                         <div>
-                        {isLoggedIn ? (<Button onClick={handleLogOut}>Log Out</Button>) : null }
+                        {isLoggedIn ? (<Button className="log-out" variant="light" onClick={handleLogOut}>Log Out</Button>) : null }
                             
                         </div>
                     </div>

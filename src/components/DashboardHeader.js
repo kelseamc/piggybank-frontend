@@ -5,7 +5,7 @@ import DashChart from './DashChart'
 
 
 
-function DashboardHeader() {
+function DashboardHeader({setFilter, filter}) {
     const userName = useSelector((state) => state.user.name)
     const toBe = useSelector((state) => state.balance.assign)
 
@@ -13,12 +13,14 @@ function DashboardHeader() {
 
     return (
         <div className="dash-top">
-            <div>
-                <h1>Welcome {userName}!! </h1>
-                <h3>Left to be Assigned: ${toBe}</h3>
+           
+            <div id="chart">
+                <DashChart setFilter={setFilter} filter={filter}/>
             </div>
-            <div>
-                <DashChart />
+            <div className="head-text">
+                <h1>Welcome {userName}!</h1>
+                <br />
+                <h3>Left to be Assigned: ${toBe}</h3>
             </div>
         </div>
     )

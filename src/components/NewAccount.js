@@ -100,7 +100,7 @@ function NewAccount(props) {
 
                         
                      <Modal.Footer>
-                            <Button variant="primary" type="submit">
+                            <Button variant="outline-dark" type="submit">
                                 Submit
                             </Button>
                   </Modal.Footer>

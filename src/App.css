@@ -1,6 +1,12 @@
 
-/****************************  Home Page ****************************/
 
+/****************************  Home Page ****************************/
+.head-logo{
+  height: 50px;
+  width: 200px;
+  margin: 30px;
+  cursor: pointer;
+}
 .homepage {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -19,7 +25,7 @@
     grid-area: 4 / 2 / 5 / 5;
    
     text-align: center;
-    background-color: rgba(230, 230, 230, 0.562);
+    /* background-color: rgba(230, 230, 230, 0.562); */
     margin: auto;
    }
    
@@ -62,13 +68,16 @@
   } */
 
   .dash-top { 
-    /* grid-area: 2 / 2 / 4 / 9;  */
-    padding-top: 100px;
-    
+    font-family: 'Raleway', sans-serif;
     padding-right: 80px;
     padding-left: 80px;
-    /* border: 1px solid black; */
-
+    
+    display: flex;
+    flex-direction: wrap;
+    background-color: transparent;
+  }
+  .head-text{
+    margin-top: 100px;
   }
 
   .bank-container { 
@@ -81,19 +90,22 @@
   
     }  
 
-   #chart{
-     height: 200px;
-     width: 100px;
-   }
+    #chart{
+      width: 600px;
+      margin-left: 100px;
+      
+    }
 
+  
    /********** Piggy Bank Container ***********/
 
 
 
   #tile-container{
+    margin-top: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
   }
 
@@ -106,20 +118,29 @@
  text-align: center;
  border: 1px solid  rgb(0, 92, 230);
  align-self: flex-start;
- margin-bottom: 30px;
+ margin-bottom: 40px;
+ margin-right: 40px;
+ font-family: 'Raleway', sans-serif;
+
 }
 .pig-header-Personal{
   text-align: center;
   border: 1px solid  rgb(138, 43, 226);
   align-self: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-right: 40px;
+  font-family: 'Raleway', sans-serif;
+ 
 
  }
 .pig-header-Retirement{
   text-align: center;
   border: 1px solid  rgb(255, 153, 0);
   align-self: flex-start;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
+  margin-right: 40px;  
+  font-family: 'Raleway', sans-serif;
+ 
 
  }
 
@@ -168,48 +189,30 @@
 /*************************   Accounts Page    ************************************/
 
 
-/* .accounts{
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  
-  }
-  
-  .dash-body{ 
-    grid-area: 1 / 1 / 8 / 10; 
-    
-  } */
+
 
   .account-container { 
-    padding-top: 100px;
     padding-bottom: 100px;
     padding-right: 80px;
     padding-left: 80px;
-    /* grid-area: 2 / 2 / 4 / 9;  */
-    
-
+    font-family: 'Raleway', sans-serif;
   }
 
-  .transaction-container { 
-    /* grid-area: 4 / 2 / 8 / 9; */
 
-
-   }
-
-  .log-btn{
-
-
-    /* border: 1px solid black; */
-  }
   .account-remove{
    right: 0;
-    
-
-    /* border: 1px solid black; */
   }
 
+
+  .account-header{
+    border: 1px solid #6221e4 ;
+
+  }
+
+  .account-card{
+    border: 1px solid #6221e467 ;
+
+  }
 
 
 
@@ -228,13 +231,26 @@
 
 /********************* Navigation Bar ***************/
 
-
+#react-burger-menu-btn{
+  position: absolute; 
+  right: 0px; 
+  top: 0px; 
+  z-index: 1; 
+  width: 100%; 
+  height: 100%; 
+  margin: 0px; 
+  padding: 0px; 
+  border: none; 
+  font-size: 0px; 
+  background: transparent; 
+  cursor: pointer;
+}
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
+  right: 36px;
   top: 36px;
  
  
@@ -272,7 +288,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
+  background: #6221e4;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -283,19 +299,40 @@ Note: Beware of modifying this element as it can break the animations - you shou
 }
 
 /* Wrapper for item list */
-.bm-item-list {
+/* .bm-item-list {
   color: #b8b7ad;
-  padding: 0.8em;
-}
+  font-family: 'Shrikhand', cursive;
 
+} */
+
+.nav-header{
+  color: rgb(196, 126, 126);
+  font-family: 'Shrikhand', cursive;
+}
 /* Individual item */
 .bm-item {
   display: inline-block;
   font-style: oblique;
   color: white;
+  margin-top: 20px;
+  font-size: larger;
 }
+
+.bm-item:hover{
+  display: inline-block;
+  font-style: oblique;
+  color: rgb(196, 126, 126);
+  margin-top: 20px;
+  font-size: larger;
+}
+
 
 /* Styling of overlay */
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+.log-out{
+  margin-top: 100px;
+}
+

@@ -3,7 +3,7 @@ import { Doughnut } from 'react-chartjs-2'
 import { useSelector } from 'react-redux'
 
 
-function DashChart() {
+function DashChart({setFilter, filter}) {
 
     const piggys = useSelector((state) => state.user.piggys)
   
@@ -15,6 +15,7 @@ function DashChart() {
     if(piggys){
     piggys.forEach((pig) => {
         if (pig.category === "Personal"){
+
              personal += pig.current_balance
          }
         else if (pig.category === "Emergency"){
@@ -46,18 +47,67 @@ function DashChart() {
                 'rgba(255, 206, 86, 1)',
             ],
             borderWidth: 1,
-            },
+            }
             
         ],
         
     }
 
+    function handleChartClick(evt, item) {
+        if(item.length > 0) {
+            if (item[0]._index === 0){
+                if (filter === "Personal"){
+                    setFilter("")  
+                }
+                else{
+                    setFilter("Personal")
+                    item[0]._model.outerRadius += 10
+
+                } 
+            }
+            else if (item[0]._index === 1){
+                if(filter === "Emergency"){
+                     setFilter("") 
+                }
+                else {
+                     setFilter("Emergency")
+                    item[0]._model.outerRadius += 10
+
+                }
+
+            }
+            else if (item[0]._index === 2){
+               if (filter === "Retirement"){
+                    setFilter("") 
+
+                }
+                else {
+                    setFilter("Retirement")
+                    item[0]._model.outerRadius += 10
+
+                }
+
+            }
+        }
+        
+    }
     // look into adding click events to chart sections 
     return (
         <div>
-            <Doughnut width={700} height={350} id="chart" data={data} options={{ maintainAspectRatio: false }}/>
+            <Doughnut 
+                width={700} 
+                height={350} id="chart" 
+                data={data} 
+                options={
+                    {maintainAspectRatio: false},
+                    {onClick: (evt, item) => {handleChartClick(evt, item)}}
+                    }/>
         </div>
     )
 }
 
 export default DashChart
+
+
+
+    

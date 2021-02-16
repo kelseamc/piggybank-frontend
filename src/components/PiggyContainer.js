@@ -6,11 +6,12 @@ import NewPigModal from './NewPigModal'
 
 
 
-function PiggyContainer() {
+function PiggyContainer({category}) {
     const userPiggys = useSelector(state => state.user.piggys)
    
     const [modalShow, setModalShow] = useState(false)
 
+    
     return (
         <div className="bank-container">
         <div>
@@ -26,7 +27,12 @@ function PiggyContainer() {
             />
         </div>
         <div id="tile-container">
-            {userPiggys ? userPiggys.map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />) : null}
+            {userPiggys ? userPiggys.filter((piggy) => { 
+                if(category=== ""){
+                return piggy}
+                else {
+                    return piggy.category === category
+                } }  ).map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />) : null}
         </div>
         </div>
     )

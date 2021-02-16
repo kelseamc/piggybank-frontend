@@ -22,7 +22,7 @@ function AccountContainer() {
     
     return (
         <>
-            <Jumbotron>
+            <Jumbotron className="account-header">
                 <h1>Total Savings: $ {totalSavings.toFixed(2)}</h1>
                 <p>
                     Amount of Money Assigned to Piggy Banks: ${assigned.toFixed(2)}

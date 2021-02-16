@@ -1,8 +1,7 @@
 import React from 'react'
 import Card from 'react-bootstrap/Card';
 import ProgressBar from 'react-bootstrap/ProgressBar'
-import { Icon } from '@iconify/react';
-import piggyBankOutline from '@iconify-icons/mdi/piggy-bank-outline';
+
 import EditTileMenu from './EditTileMenu'
 
 
@@ -13,10 +12,10 @@ function PiggyTile({piggy}) {
 
 
     return (
-        <>
-            <Card className={`pig-header-${piggy.category}`} style={{ width: '18rem' }}>
+        <div >
+            <Card className={`pig-header-${piggy.category}`} style={{ width: '18rem' }} >
                 <Card.Header>
-                <h5><Icon className={piggy.category} icon={piggyBankOutline}  height="2em" /> <br/>  {piggy.name}</h5>
+                <h5> {piggy.name}</h5>
                   
                 </Card.Header>
                 <Card.Body>
@@ -28,7 +27,7 @@ function PiggyTile({piggy}) {
                     />
                 </Card.Body>
             </Card>
-        </>
+        </div>
     )
 
 }

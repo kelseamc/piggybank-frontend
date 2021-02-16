@@ -52,9 +52,7 @@ function EditTileMenu({piggy}) {
                     rotation={45}
                     bounceDirection="BOTTOM"
                 >
-                     <div />
-                    <div />
-                    <div /> 
+                   
                     <Icon 
                         className="edit-option"  
                         icon={cashRemove} 
@@ -73,7 +71,9 @@ function EditTileMenu({piggy}) {
                         color="red" 
                         height="2em" 
                         />
-                   
+                     <div />
+                    <div />
+                    <div /> 
                 </Planet>
 
                 <PiggyAddMoney piggy={piggy} show={modalAddShow} onHide={() => setModalAddShow(false)} />
