@@ -15,7 +15,7 @@ function Login({setCurrentUser}) {
   
     function handleLoginSubmit(e) {
        e.preventDefault()
-        fetch('http://localhost:3000/api/v1/login', {
+        fetch('https://stark-journey-00995.herokuapp.com/api/v1/login', {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',

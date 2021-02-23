@@ -5,7 +5,6 @@ import Dashboard from "./pages/Dashboard"
 import Accounts from "./pages/Accounts"
 import { Redirect, Route, Switch } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
-
 import { setId, setAccounts, setPiggy, setTransactions, setName, login } from '../redux/userSlice'
 import { setAssign, setTotal } from "../redux/balanceSlice";
 
@@ -19,7 +18,7 @@ function App() {
    useEffect(() => {
      const token = localStorage.getItem("token")
       if (token){
-        fetch(`http://localhost:3000/api/v1/profile`, {
+        fetch(`https://stark-journey-00995.herokuapp.com//api/v1/profile`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,

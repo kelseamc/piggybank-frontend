@@ -34,7 +34,7 @@ function TranRow({transaction}) {
 
     function handleDelete(){
         
-        fetch(`http://localhost:3000/api/v1/transactions/${transaction.id}`, {
+        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/transactions/${transaction.id}`, {
             method: "DELETE"
         })
         .then((r) => r.json())
@@ -54,8 +54,8 @@ function TranRow({transaction}) {
             : 
             newBalance = parseFloat(account.total) + parseFloat(transaction.amount) )
 
-            console.log("newBalance", newBalance)
-        fetch(`http://localhost:3000/api/v1/accounts/${transaction.account_id}`, {
+            
+        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts/${transaction.account_id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

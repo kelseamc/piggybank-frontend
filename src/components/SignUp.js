@@ -25,7 +25,7 @@ function SignUp({setCurrentUser}) {
 
     function handleNewUser(e){
         e.preventDefault()
-        fetch(`http://localhost:3000/api/v1/register`, {
+        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/register`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -48,7 +48,7 @@ function SignUp({setCurrentUser}) {
     function handleNewAccount(userObj){
         const newUserAccount = {account_number: accNum, name: accName, total: balance, user_id: userObj.id}
 
-        fetch(`http://localhost:3000/api/v1/accounts`, {
+        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function SignUp({setCurrentUser}) {
     function handleUserInfo(){
         const token = localStorage.getItem("token")
 
-        fetch(`http://localhost:3000/api/v1/profile`, {
+        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/profile`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
