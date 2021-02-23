@@ -20,23 +20,18 @@
   }
   
   .background { 
-    grid-area: 1 / 1 / 6 / 6; 
-    /* border: 1px solid  black; */
+    grid-area: 1 / 1 / 6 / 6;
     text-align: center;
   }
 
   .logo { 
     grid-area: 4 / 2 / 5 / 5;
-   
     text-align: center;
-    /* background-color: rgba(230, 230, 230, 0.562); */
     margin: auto;
    }
    
    .logo img{
-    grid-area: 4 / 2 / 5 / 5;
-    /* border: 1px solid black; */
-    
+    grid-area: 4 / 2 / 5 / 5; 
    }
 
    .form{
@@ -47,13 +42,10 @@
     text-align: center;
     background-color: rgba(255, 255, 255, 0.877);
     width: 400px;
-    
    }
   .button-login {
      grid-area: 2 / 2 / 4 / 5; 
      text-align: center;
-   
-    /* border: 1px solid black; */
     }
 
 /*************************   Dashboard     ***************************/
@@ -67,38 +59,30 @@
   box-shadow: 11px 10px 5px 1px #c2c2c2;
   border-radius: 10px;
   } 
-  
-  /* .dash-body{  
-    grid-area: 1 / 1 / 8 / 10; 
-    border: 1px solid black;
-  } */
+
 
   .dash-top { 
     font-family: 'Raleway', sans-serif;
-    padding-right: 80px;
-    padding-left: 80px;
+ 
     display: flex;
-    /* flex-direction: wrap;
-    background-color: transparent; */
+    flex-wrap: wrap;
+   
+    width: 100%;
   }
-  .head-text{
-    margin-top: 100px;
-  }
+
 
   .bank-container { 
   
     padding-bottom: 100px;
     padding-right: 80px;
     padding-left: 80px;
-    /* grid-area: 4 / 2 / 8 / 9; */
-    /* border: 1px solid black; */
+
   
     }  
 
     #chart {
        width: 600px;
-      /* height: 00px; */
-      /* margin-left: 100px; */
+    
       
     }
 
@@ -204,15 +188,7 @@
 
 /*************************   Accounts Page    ************************************/
 
-.accounts{
-  /* background-color: whitesmoke;
-  padding-top: 50px;
-  margin-right: 100px;
-  margin-left: 100px;
-  margin-bottom: 100px;
-  box-shadow: 11px 10px 5px 1px #c2c2c2;
-  border-radius: 10px; */
-}
+
 
 
   .account-container { 
@@ -322,12 +298,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
   fill: #373a47;
 }
 
-/* Wrapper for item list */
-/* .bm-item-list {
-  color: #b8b7ad;
-  font-family: 'Shrikhand', cursive;
 
-} */
 
 .nav-header{
   color: rgb(196, 126, 126);
