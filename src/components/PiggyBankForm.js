@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addPiggy } from '../redux/userSlice'
 import { subtractAssign } from '../redux/balanceSlice'
 
-function PiggyBankForm() {
+function PiggyBankForm({setSubmit, onHide}) {
    
     /*************  Redux    *************/
 
@@ -34,10 +34,9 @@ function PiggyBankForm() {
         user_id: userId
     }
    
-
-
     function handleSubmit(e) {
         e.preventDefault()
+        setSubmit(true)
         fetch('http://localhost:3000/api/v1/piggy_banks', {
             method: "POST",
             headers: {
@@ -47,7 +46,13 @@ function PiggyBankForm() {
         })
         .then((r) => r.json())
         .then((pigDb) => {
-           handleReduxPig(pigDb) 
+                handleReduxPig(pigDb) 
+                onHide()
+                setName("")
+                setGoal(0)
+                setCurrentBalance(0)
+                setCategory("")
+                setSubmit(false)
         })
     }
     
@@ -61,7 +66,7 @@ function PiggyBankForm() {
             <Form.Group controlId="formGridAddress2">
                 <Form.Label>Piggy Bank Title</Form.Label>
                 <Form.Control
-                 
+                 required
                  placeholder="Title" 
                  value={name}
                  onChange={(e) => setName(e.target.value)}/>
@@ -71,6 +76,7 @@ function PiggyBankForm() {
                 <Form.Group  controlId="formGridEmail">
                 <Form.Label>Goal Amount $:</Form.Label>
                 <Form.Control 
+                    required
                     type="number" 
                     placeholder="0.00"
                     step="0.01"
@@ -81,6 +87,7 @@ function PiggyBankForm() {
                 <Form.Group  controlId="formGridPassword">
                 <Form.Label>Assigned Amount $:</Form.Label>
                 <Form.Control 
+                    required
                     type="number" 
                     step="0.01"
                     placeholder="0.00" 
@@ -92,13 +99,13 @@ function PiggyBankForm() {
                     <Form.Label>Category:</Form.Label>
                     <Form.Control 
                         as="select" custom
-                       
+                        required     
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}>
-                        <option>Choose ...</option>
-                        <option>Emergency</option>
-                        <option>Personal</option>
-                        <option>Retirement</option>
+                        <option value="">Choose ...</option>
+                        <option value="Emergency">Emergency</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Retirement">Retirement</option>
                     </Form.Control>
                 </Form.Group>
             </Form.Row>

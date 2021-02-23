@@ -7,7 +7,6 @@ function DashChart({setFilter, filter}) {
 
     const piggys = useSelector((state) => state.user.piggys)
   
-    //possibly use state here?
     let personal = 0
     let emergency = 0
     let retirement = 0
@@ -15,7 +14,6 @@ function DashChart({setFilter, filter}) {
     if(piggys){
     piggys.forEach((pig) => {
         if (pig.category === "Personal"){
-
              personal += pig.current_balance
          }
         else if (pig.category === "Emergency"){
@@ -24,7 +22,6 @@ function DashChart({setFilter, filter}) {
         else if (pig.category === "Retirement"){
                     retirement += pig.current_balance
         }
-     
      })
     }
 
@@ -39,7 +36,6 @@ function DashChart({setFilter, filter}) {
                 'rgb(138, 43, 226)',
                 'rgb(0, 92, 230)',
                 'rgb(255, 153, 0)',
-             
             ],
             borderColor: [
                 'rgb(138, 43, 226)',
@@ -48,9 +44,7 @@ function DashChart({setFilter, filter}) {
             ],
             borderWidth: 1,
             }
-            
-        ],
-        
+        ],  
     }
 
     function handleChartClick(evt, item) {
@@ -62,7 +56,6 @@ function DashChart({setFilter, filter}) {
                 else{
                     setFilter("Personal")
                     item[0]._model.outerRadius += 10
-
                 } 
             }
             else if (item[0]._index === 1){
@@ -72,36 +65,30 @@ function DashChart({setFilter, filter}) {
                 else {
                      setFilter("Emergency")
                     item[0]._model.outerRadius += 10
-
                 }
-
             }
             else if (item[0]._index === 2){
                if (filter === "Retirement"){
                     setFilter("") 
-
                 }
                 else {
                     setFilter("Retirement")
                     item[0]._model.outerRadius += 10
-
                 }
-
             }
-        }
-        
+        } 
     }
-    // look into adding click events to chart sections 
+
     return (
         <div>
             <Doughnut 
                 width={700} 
                 height={350} id="chart" 
                 data={data} 
-                options={
+                options= {(
                     {maintainAspectRatio: false},
                     {onClick: (evt, item) => {handleChartClick(evt, item)}}
-                    }/>
+                )}/>
         </div>
     )
 }

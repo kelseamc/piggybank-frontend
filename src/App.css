@@ -1,5 +1,9 @@
 
 
+.error {
+  color: red;
+}
+
 /****************************  Home Page ****************************/
 .head-logo{
   height: 50px;
@@ -54,15 +58,17 @@
 
 /*************************   Dashboard     ***************************/
 
- /* .dashboard {
-  display: grid;
-  grid-template-columns: repeat(9, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-  }
+ .dashboard {
+  background-color: whitesmoke;
+  padding-top: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  box-shadow: 11px 10px 5px 1px #c2c2c2;
+  border-radius: 10px;
+  } 
   
-  .dash-body{ 
+  /* .dash-body{  
     grid-area: 1 / 1 / 8 / 10; 
     border: 1px solid black;
   } */
@@ -71,10 +77,9 @@
     font-family: 'Raleway', sans-serif;
     padding-right: 80px;
     padding-left: 80px;
-    
     display: flex;
-    flex-direction: wrap;
-    background-color: transparent;
+    /* flex-direction: wrap;
+    background-color: transparent; */
   }
   .head-text{
     margin-top: 100px;
@@ -90,9 +95,10 @@
   
     }  
 
-    #chart{
-      width: 600px;
-      margin-left: 100px;
+    #chart {
+       width: 600px;
+      /* height: 00px; */
+      /* margin-left: 100px; */
       
     }
 
@@ -109,6 +115,11 @@
     flex-wrap: wrap;
   }
 
+  #popover-basic{
+    font-family: 'Raleway', sans-serif;
+    box-shadow: 11px 10px 5px 1px #c2c2c2;
+
+  }
 
 /***************** Piggy Bank Tile ******************/
 
@@ -162,6 +173,11 @@
   height: 4em
 } 
 
+.submit-img{
+  height: 100px;
+  width: 75px;
+}
+
 /* Pig Icon Colors */
 .Emergency{
   color: rgb(0, 92, 230);
@@ -188,7 +204,15 @@
 
 /*************************   Accounts Page    ************************************/
 
-
+.accounts{
+  /* background-color: whitesmoke;
+  padding-top: 50px;
+  margin-right: 100px;
+  margin-left: 100px;
+  margin-bottom: 100px;
+  box-shadow: 11px 10px 5px 1px #c2c2c2;
+  border-radius: 10px; */
+}
 
 
   .account-container { 

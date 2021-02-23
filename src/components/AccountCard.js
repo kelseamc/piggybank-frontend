@@ -36,12 +36,12 @@ function AccountCard({account}) {
             <br />
              <Card className="account-card">
                 <Card.Header className="text-center">
-                <Card.Title>{account.name}</Card.Title>
+                <Card.Title><b>{account.name}</b></Card.Title>
                    
                  
                  </Card.Header>
                 <Card.Body className="text-center">
-                    <h6>Current Balance: ${account.total}</h6>
+                    <h5>Current Balance: <b>${account.total}</b></h5>
                   
                     <span className="log-btn">
                     <Button  onClick={() => setModalLogShow(true)} variant="outline-dark"> Log Transaction </Button>

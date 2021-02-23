@@ -32,7 +32,7 @@ function Nav(){
                    
                 {isLoggedIn ? (<div className="nav-header" >
                        <h2>Hello, {userName}!</h2>
-                        <h3>Total Savings: ${totalSavings}</h3>
+                        <h3>Total Savings: ${totalSavings.toFixed(2)}</h3>
                     </div> ) : (<h2>Please Login or Sign Up</h2>) }
                     
                     <div className="bm-item-list">

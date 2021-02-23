@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
+
 import PiggyBankForm from './PiggyBankForm'
+import Spinner from 'react-bootstrap/Spinner'
+
 
 function NewPigModal(props) {
-  
+  const [submit, setSubmit] = useState(false)
 
     return (
         <div>
@@ -22,12 +24,11 @@ function NewPigModal(props) {
             </Modal.Header>
 
             <Modal.Body>
-                <PiggyBankForm />
+                {submit ? <Spinner animation="border" variant="success" /> :
+                <PiggyBankForm setSubmit={setSubmit} onHide={props.onHide} />}
             </Modal.Body>
       
-            <Modal.Footer>
-                <Button variant="outline-dark" onClick={props.onHide}>Cancel</Button>
-            </Modal.Footer>
+           
             </Modal>
         </div>
     )

@@ -34,8 +34,13 @@ function SignUp({setCurrentUser}) {
        })
        .then((r) => r.json())
        .then((data) => {
+           if (data.error){
+               alert(data.error)
+           }
+           else {
             handleNewAccount(data.user)
             localStorage.setItem("token", data.token)
+            }
            
        })
     }
@@ -84,7 +89,7 @@ function SignUp({setCurrentUser}) {
                 <Form.Group  controlId="formGridName">
                 <Form.Label>Name</Form.Label>
                 <Form.Control 
-                    
+                    required
                     placeholder="Enter Your Name" 
                     value={newName}
                     onChange={(e) => setNewName(e.target.value)}/>
@@ -93,6 +98,7 @@ function SignUp({setCurrentUser}) {
                 <Form.Group controlId="formGridUsername">
                 <Form.Label>Username</Form.Label>
                 <Form.Control  
+                    required
                     placeholder="Create Username" 
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}/>
@@ -102,6 +108,7 @@ function SignUp({setCurrentUser}) {
                 <Form.Group controlId="formGridPassword">
                     <Form.Label>Password</Form.Label>
                     <Form.Control 
+                        required
                         type="password" 
                         placeholder="Create Password" 
                         value={password}
@@ -115,7 +122,7 @@ function SignUp({setCurrentUser}) {
             <Form.Group >
             <Form.Label>Account Name</Form.Label>
             <Form.Control 
-                
+                required
                 placeholder="Account Name"
                 value={accName}
                 onChange={(e) => setAccName(e.target.value)} />
@@ -124,6 +131,7 @@ function SignUp({setCurrentUser}) {
             <Form.Group >
             <Form.Label>Account Number</Form.Label>
             <Form.Control 
+                required
                 type="password" 
                 placeholder="Account Number"
                 value={accNum}
@@ -134,6 +142,7 @@ function SignUp({setCurrentUser}) {
             <Form.Group >
                 <Form.Label>Current Balance</Form.Label>
                 <Form.Control
+                required
                 type="number" 
                 step="0.01"
                 placeholder=" Balance"

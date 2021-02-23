@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Spinner from 'react-bootstrap/Spinner'
 import { useDispatch, useSelector } from 'react-redux'
 import { addAccount } from '../redux/userSlice'
 import { addAssign, addTotal } from '../redux/balanceSlice'
@@ -25,7 +26,7 @@ function NewAccount(props) {
     const [name, setName] = useState("")
     const [accNum, setAccNum] = useState("")
     const [accTotal, setAccTotal] = useState(0)
-    
+    const [submit, setSubmit] = useState(false)
 
     const newAccount = {name: name, 
                         account_number: accNum,
@@ -34,6 +35,7 @@ function NewAccount(props) {
 
     function handleSubmit(e){
         e.preventDefault()
+        setSubmit(true)
         fetch(`http://localhost:3000/api/v1/accounts`, {
            method: "POST",
            headers: {
@@ -44,6 +46,11 @@ function NewAccount(props) {
        .then((r) => r.json())
        .then((newDbAcc) => {
           handelReduxAccount(newDbAcc)
+          props.onHide()
+          setSubmit(false)
+          setName("")
+          setAccNum("")
+          setAccTotal(0)
        })
     }
                       
@@ -61,12 +68,14 @@ function NewAccount(props) {
                 </Modal.Title>
             </Modal.Header>
             <Modal.Body>
-
+                {submit ? <Spinner animation="border" variant="success" />
+                :
                 <Form onSubmit={handleSubmit}>
                     <Form.Row>
                             <Form.Group  controlId="formGridName">
                             <Form.Label>Account Name</Form.Label>
                             <Form.Control 
+                                required
                                 type="account-name" 
                                 placeholder="Enter Account Name" 
                                 value={name}
@@ -77,6 +86,7 @@ function NewAccount(props) {
                             <Form.Group  controlId="formGridPassword">
                             <Form.Label>Account Number</Form.Label>
                             <Form.Control 
+                                required
                                 type="account-number" 
                                 placeholder="Enter Account Number" 
                                 value={accNum}
@@ -88,6 +98,7 @@ function NewAccount(props) {
                         <Form.Group  controlId="formGridPassword">
                             <Form.Label>Current Balance: $</Form.Label>
                             <Form.Control 
+                                required
                                 type="number" 
                                 step="0.01"
                                 placeholder="0.00" 
@@ -105,7 +116,7 @@ function NewAccount(props) {
                             </Button>
                   </Modal.Footer>
                 </Form>
-
+                }
             </Modal.Body>
            
             </Modal>
