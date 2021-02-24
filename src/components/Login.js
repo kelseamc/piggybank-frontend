@@ -44,7 +44,7 @@ function Login({setCurrentUser}) {
         <Container className="form">
         
         (<Form onSubmit={handleLoginSubmit}>
-            {loading ? <Spinner /> : null}
+            {loading ? <Spinner animation="border" variant="success"/> : null}
                 {error ? <p className="error" >{error}</p> : null}
                 <Form.Group >
                 <Form.Label>Username</Form.Label>
