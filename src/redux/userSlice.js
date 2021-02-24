@@ -5,7 +5,7 @@ const userSlice = createSlice({
     initialState: {
         id: 0,
         name: "",
-        accounts: [],
+        accounts: [0,0],
         transactions: [],
         piggys: [],
         loggedIn: false

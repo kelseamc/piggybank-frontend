@@ -35,7 +35,7 @@ function PiggyContainer({category}) {
         <div>
                 
            {userPiggys.length > 0 ? <Button  className="new-pig-btn"  variant="outline-dark" onClick={() => handleClick()}>+</Button> :
-                (<OverlayTrigger show={show} placement="top" overlay={popover}>
+            (<OverlayTrigger show={show} placement="top" overlay={popover}>
                     <Button  className="new-pig-btn"  variant="outline-dark" onClick={() => handleClick()}>+</Button> 
                 </OverlayTrigger>)
             }
