@@ -27,7 +27,8 @@ function Login({setCurrentUser}) {
        .then((r) => r.json())
        .then((data) => {
            if (data.error){
-               setError(data.error)
+                setLoading(false)
+                setError(data.error)
            }
            else {
            setCurrentUser(data.user)
@@ -41,8 +42,9 @@ function Login({setCurrentUser}) {
 
     return (
         <Container className="form">
-        {loading ? 
+        
         (<Form onSubmit={handleLoginSubmit}>
+            {loading ? <Spinner /> : null}
                 {error ? <p className="error" >{error}</p> : null}
                 <Form.Group >
                 <Form.Label>Username</Form.Label>
@@ -71,7 +73,7 @@ function Login({setCurrentUser}) {
                 Submit
             </Button>
         </Form>)
-        : <Spinner />}
+        
         </Container>
     )
 }
