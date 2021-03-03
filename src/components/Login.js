@@ -17,7 +17,7 @@ function Login({setCurrentUser}) {
     function handleLoginSubmit(e) {
        e.preventDefault()
        setLoading(true)
-        fetch('https://stark-journey-00995.herokuapp.com/api/v1/login', {
+        fetch('https://pigbankk.herokuapp.com/api/v1/login', {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -27,23 +27,23 @@ function Login({setCurrentUser}) {
        .then((r) => r.json())
        .then((data) => {
            if (data.error){
-                setLoading(false)
+                
                 setError(data.error)
            }
            else {
            setCurrentUser(data.user)
-           setLoading(false)
            localStorage.setItem("token", data.token)
            history.push("/dashboard")
 
            }
+        setLoading(false)
        })
     }
 
     return (
         <Container className="form">
         
-        (<Form onSubmit={handleLoginSubmit}>
+        <Form onSubmit={handleLoginSubmit}>
             {loading ? <Spinner animation="border" variant="success"/> : null}
                 {error ? <p className="error" >{error}</p> : null}
                 <Form.Group >
@@ -72,7 +72,7 @@ function Login({setCurrentUser}) {
             <Button variant="outline-primary" type="submit">
                 Submit
             </Button>
-        </Form>)
+        </Form>
         
         </Container>
     )

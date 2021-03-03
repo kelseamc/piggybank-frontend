@@ -37,7 +37,7 @@ function PiggyBankForm({setSubmit, onHide}) {
     function handleSubmit(e) {
         e.preventDefault()
         setSubmit(true)
-        fetch('https://stark-journey-00995.herokuapp.com/api/v1/piggy_banks', {
+        fetch('https://pigbankk.herokuapp.com/api/v1/piggy_banks', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json',

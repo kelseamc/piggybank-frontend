@@ -36,7 +36,7 @@ function NewAccount(props) {
     function handleSubmit(e){
         e.preventDefault()
         setSubmit(true)
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/accounts`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',

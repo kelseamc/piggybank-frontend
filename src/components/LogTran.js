@@ -41,7 +41,7 @@ function LogTran(props) {
     function handleSubmit(event){
         event.preventDefault()
         setSubmit(true)
-        fetch("https://stark-journey-00995.herokuapp.com/api/v1/transactions", {
+        fetch("https://pigbankk.herokuapp.com/api/v1/transactions", {
             method: "POST",
             headers: {
             'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ function LogTran(props) {
             newBalance = parseFloat(props.account.total) + parseFloat(tranObj.amount)
              : 
             newBalance = parseFloat(props.account.total) - parseFloat(tranObj.amount) )
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts/${tranObj.account_id}`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/accounts/${tranObj.account_id}`, {
             method: "PATCH",
             headers: {
                 'Content-Type': 'application/json',

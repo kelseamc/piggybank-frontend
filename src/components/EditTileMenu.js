@@ -28,7 +28,7 @@ function EditTileMenu({piggy}) {
 
     
     function handleRemove(){
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/piggy_banks/${piggy.id}`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/piggy_banks/${piggy.id}`, {
             method: "DELETE"
         })
         .then((r) => r.json())

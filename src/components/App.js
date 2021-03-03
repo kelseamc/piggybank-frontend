@@ -1,8 +1,9 @@
-import React, {useEffect} from "react"
+import React, {useEffect, useState} from "react"
 import Header from './Header'
 import HomePage from "./pages/HomePage"
 import Dashboard from "./pages/Dashboard"
 import Accounts from "./pages/Accounts"
+import Spinner from 'react-bootstrap/Spinner'
 import { Redirect, Route, Switch } from "react-router-dom"
 import { useDispatch, useSelector } from 'react-redux'
 import { setId, setAccounts, setPiggy, setTransactions, setName, login } from '../redux/userSlice'
@@ -18,7 +19,7 @@ function App() {
    useEffect(() => {
      const token = localStorage.getItem("token")
       if (token){
-        fetch(`https://stark-journey-00995.herokuapp.com//api/v1/profile`, {
+        fetch('https://pigbankk.herokuapp.com/api/v1/profile', {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -51,12 +52,14 @@ function App() {
               }
           let toBeAssigned = savings - inPiggy
           dispatch(setAssign(toBeAssigned))
+  
     }
   
  return (
   <div  id="outer-container">
-          
-        
+  
+
+     
             <Nav />
             <div id="page-wrap">
             <Header />
@@ -87,6 +90,8 @@ function App() {
 
           </Switch>
           </div>
+         
+
   </div>
  )
 

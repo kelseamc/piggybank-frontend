@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Container from 'react-bootstrap/Container'
 import { useHistory } from "react-router-dom";
+import Spinner from 'react-bootstrap/Spinner'
 
 
 
@@ -11,7 +12,7 @@ function SignUp({setCurrentUser}) {
   
 
 /*********************  Event Handlers  ******************************/
-
+    const [loading, setLoading] = useState(false)
     const [newName, setNewName] = useState("")
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -24,8 +25,9 @@ function SignUp({setCurrentUser}) {
     let history = useHistory()
 
     function handleNewUser(e){
+        setLoading(true)
         e.preventDefault()
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/register`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/register`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -41,6 +43,7 @@ function SignUp({setCurrentUser}) {
             handleNewAccount(data.user)
             localStorage.setItem("token", data.token)
             }
+            setLoading(false)
            
        })
     }
@@ -48,7 +51,7 @@ function SignUp({setCurrentUser}) {
     function handleNewAccount(userObj){
         const newUserAccount = {account_number: accNum, name: accName, total: balance, user_id: userObj.id}
 
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/accounts`, {
            method: "POST",
            headers: {
             'Content-Type': 'application/json',
@@ -64,7 +67,7 @@ function SignUp({setCurrentUser}) {
     function handleUserInfo(){
         const token = localStorage.getItem("token")
 
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/profile`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/profile`, {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -73,6 +76,7 @@ function SignUp({setCurrentUser}) {
         .then((r) => r.json())
         .then((userObj) => {
           setCurrentUser(userObj)
+          setLoading(false)
           history.push("/dashboard")
         })
     }
@@ -83,7 +87,8 @@ function SignUp({setCurrentUser}) {
     return (
        <Container className="form">
         <Form id="signup" onSubmit={handleNewUser}>
-        <h4>Create and Account</h4>
+            {loading ? <Spinner /> : null}
+                 <h4>Create an Account</h4>
 
           
                 <Form.Group  controlId="formGridName">

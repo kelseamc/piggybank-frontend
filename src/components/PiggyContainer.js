@@ -32,7 +32,7 @@ function PiggyContainer({category}) {
     return (
       
         <div className="bank-container">
-        <div>
+            
                 
            {userPiggys.length > 0 ? <Button  className="new-pig-btn"  variant="outline-dark" onClick={() => handleClick()}>+</Button> :
             (<OverlayTrigger show={show} placement="top" overlay={popover}>
@@ -45,7 +45,7 @@ function PiggyContainer({category}) {
                 show={modalShow}
                 onHide={() => setModalShow(false)}
             />
-        </div>
+      
         <div id="tile-container">
             {userPiggys ?  userPiggys.filter((piggy) => { 
                 if(category=== ""){return piggy}

@@ -22,7 +22,7 @@ function AccountCard({account}) {
     }
   
     function handleRemove(){
-        fetch(`https://stark-journey-00995.herokuapp.com/api/v1/accounts/${account.id}`, {
+        fetch(`https://pigbankk.herokuapp.com/api/v1/accounts/${account.id}`, {
            method: "DELETE"
        })
        .then((r) => r.json())
