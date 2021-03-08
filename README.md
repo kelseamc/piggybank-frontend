@@ -10,10 +10,10 @@ In PiggyBank, users will be able to create virtual "piggy banks" for each of the
 
 This is a **multi-page React app built using React Router and Redux with Toolkit**.
 I started by building the Sign Up and Log In flow, which will take first users to an initial form to create a new Account, while returning users will be taken directly to the Dashboard.
-The Dashboard and Accounts page are restricted areas: we have implemented **authentication**  using **JSON Web Tokens** and **Bycrypt**, so only registered users can access it.
+The Dashboard and Accounts page are restricted areas: I have implemented **authentication**  using **JSON Web Tokens** and **Bycrypt**, so only registered users can access it.
 This is all achieved with redirecting between components thanks to Router, in combination with state management in the Redux Store.
 
-- Main sections are performing a **fetch to the backend to either GET, POST, PATCH or DELETE data**.
+- Main sections are performing a **fetch to the backend to either GET, POST, PATCH or DELETE data** and state is updated accordingly using Redux.
 - "Piggy bank" and Account tiles will show EDIT and DELETE options, which gives the user the possibility to update an older entry or remove it.
 - Styling is mostly done using React-Bootstrap UI, with a small amount of custom CSS in the mix.
 
@@ -24,7 +24,7 @@ This is all achieved with redirecting between components thanks to Router, in co
 
 ## Backend 😎
 
-We have also developed the Backend for this application which consists of a **RESTful API built with Ruby on Rails**.
+I have also developed the Backend for this application which consists of a **RESTful API built with Ruby on Rails**.
 
 You can find the repository for it here: https://github.com/kelseamc/piggybank-backend
 
