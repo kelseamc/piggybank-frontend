@@ -18,13 +18,14 @@ function PiggyContainer({category}) {
         setModalShow(true)
         setShow(false)
     }
+
     const popover = (
         <Popover id="popover-basic">
           <Popover.Title as="h3">Get Started</Popover.Title>
-          <Popover.Content>
-            Got a savings goal? 
-            Create a PiggyBank for it!
-          </Popover.Content>
+            <Popover.Content>
+                Got a savings goal? 
+                Create a PiggyBank for it!
+            </Popover.Content>
         </Popover>
       );
 
@@ -32,27 +33,30 @@ function PiggyContainer({category}) {
     return (
       
         <div className="bank-container">
-            
-                
-           {userPiggys.length > 0 ? <Button  className="new-pig-btn"  variant="outline-dark" onClick={() => handleClick()}>+</Button> :
-            (<OverlayTrigger show={show} placement="top" overlay={popover}>
-                    <Button  className="new-pig-btn"  variant="outline-dark" onClick={() => handleClick()}>+</Button> 
-                </OverlayTrigger>)
+
+           {userPiggys.length > 0 ? <Button className="new-pig-btn"  
+                                            variant="outline-dark" 
+                                            onClick={() => handleClick()}>
+                                            + 
+                                    </Button> 
+                                :
+                                    (<OverlayTrigger show={show} placement="top" overlay={popover}>
+                                            <Button className="new-pig-btn"  
+                                                    variant="outline-dark" 
+                                                    onClick={() => handleClick()}>
+                                                    +
+                                            </Button> 
+                                    </OverlayTrigger>)
             }
-                                                                                        
-                                                                                       
-            <NewPigModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-            />
+                                                                                                                                                                  
+            <NewPigModal show={modalShow} onHide={() => setModalShow(false)}/>
       
         <div id="tile-container">
             {userPiggys ?  userPiggys.filter((piggy) => { 
                 if(category=== ""){return piggy}
-                
-                else {
-                    return piggy.category === category
-                } }  ).map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />) : null}
+                else return piggy.category === category
+                })
+                .map((piggy) => <PiggyTile key={piggy.id} piggy={piggy} />) : null}
         </div>
         </div>
     )
